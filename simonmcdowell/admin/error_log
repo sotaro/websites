@@ -1,0 +1,5 @@
+[16-Mar-2007 16:13:46] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'toshi'@'localhost' (using password: YES) in /home/giftnzco/public_html/simonmcdowell/admin/add_news_register.php on line 15
+[16-Mar-2007 16:50:39] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home/giftnzco/public_html/simonmcdowell/admin/view_shows.php on line 16
+[16-Mar-2007 16:50:39] PHP Warning:  mysql_free_result(): supplied argument is not a valid MySQL result resource in /home/giftnzco/public_html/simonmcdowell/admin/view_shows.php on line 17
+[16-Mar-2007 16:50:40] PHP Warning:  mysql_fetch_row(): supplied argument is not a valid MySQL result resource in /home/giftnzco/public_html/simonmcdowell/admin/view_shows.php on line 16
+[16-Mar-2007 16:50:40] PHP Warning:  mysql_free_result(): supplied argument is not a valid MySQL result resource in /home/giftnzco/public_html/simonmcdowell/admin/view_shows.php on line 17
