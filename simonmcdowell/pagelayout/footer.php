@@ -1,5 +1,6 @@
-<div id="footer">Copyright &copy; 2007-2012 Simon McDowell, all rights reserved.</div>
-
+<?php $y=date("Y");
+echo '<div id="footer">Copyright &copy; 2007-'.$y.' Simon McDowell, all rights reserved.</div>';
+?>
 <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
 </script>
 <script type="text/javascript">
