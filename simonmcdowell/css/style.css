@@ -6,7 +6,7 @@
 body{
 	margin:0;
 	padding:0;
-	background:#000 url(images/layout/bg-body.png) no-repeat top right;
+	background:#000 url(../images/layout/bg-body.png) no-repeat top right;
 	color:#fff;
 }
 
@@ -24,7 +24,7 @@ a:hover{
 	margin:auto;
 	text-align:center;
 	height:180px;
-	background-image: url(images/layout/drum-icon.png);
+	background-image: url(../images/layout/drum-icon.png);
 	background-repeat:no-repeat;
 	background-position:right center;
 	padding:10px 0 0 0;
@@ -90,7 +90,7 @@ p {
 	}
 
 .separator{
-	background:url(images/layout/separator.png) repeat-y;
+	background:url(../images/layout/separator.png) repeat-y;
 	height:11px;
 	}
 #footer{

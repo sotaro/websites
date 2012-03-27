@@ -1,15 +1,15 @@
 <?php
 
 session_start();
-
-$db_name = "giftnzco_simn";
+$db=$GLOBALS['___conf']['db'];
 $table_name = "shows";
 
 $maxrow = 10;
 $page = 0 + $_GET['page'];
 
 $connection = mysql_connect("localhost", "giftnzco_toshi", "mysqladmin") or die("Sorry, You couldn't connect to the database.");
-mysql_select_db($db_name, $connection) or die("Sorry, You couldn't select the database.");
+//mysql_select_db($db_name, $connection) or die("Sorry, You couldn't select the database.");
+mysql_select_db($db['name'], $connection) or die("Sorry, You couldn't select the database.");
 
 $sql = "select count(ordercode) as num from $table_name";
 $rs = mysql_query($sql);

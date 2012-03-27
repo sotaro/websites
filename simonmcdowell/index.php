@@ -14,14 +14,14 @@
 <?php 
 
 //var_dump($_SERVER);
-$r = $_SERVER['REQUEST_URI'];
+$___conf=unserialize(file_get_contents("./simon.conf"));
+$r=$_SERVER['REQUEST_URI'];
 if($p=strpos($r,"?")) $r=substr($r,0,$p);
 if($r==="/") $r="index.php";
-$fname = getcwd()."/pageinner".$r;
-echo "fname:".$fname."<br>";
-if(!file_exists($fname))
-	$fname = getcwd()."/pageinner/index.php";
-include $fname;
+$f=getcwd()."/pageinner".$r;
+if(!file_exists($f))
+	$f=getcwd()."/pageinner/index.php";
+include $f;
 ?>
 </div>
 <div class="clear"></div>

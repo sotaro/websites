@@ -3,9 +3,9 @@
 	<a href="index.php"><h1><img src="images/layout/simon-logo.png" alt="Simon McDowell" width="456"  height="59" class="simon-logo" /></h1></a>
 
 <div class="menu">
-	<div class="menu-item"><a href="news.php?page=0">News</a></div>
+	<div class="menu-item"><a href="news.php">News</a></div>
     <div class="menu-item"><a href="bio.php">Bio</a></div>
-    <div class="menu-item"><a href="shows.php?page=0">Shows</a></div>
+    <div class="menu-item"><a href="shows.php">Shows</a></div>
     <div class="menu-item"><a href="gallery.php">Gallery</a></div>
     <div class="menu-item"><a href="video.php">Video</a></div>
     <div class="menu-item"><a href="tuition.php">Tuition</a></div>
