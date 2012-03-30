@@ -13,11 +13,19 @@ if(!mysql_select_db($db['name'],$dbh)){
 echo '<h2>Latest News</h2>';
 
 // news
-$rs = mysql_query("SELECT date,DATE_FORMAT(date,'%a') as day,news FROM news ORDER BY num desc limit 2");
+$rs = mysql_query("SELECT date,DATE_FORMAT(date,'%a') as day,news FROM news ORDER BY num desc limit 3");
 while($row = mysql_fetch_array($rs)){
 	echo '<p id="topnews"><span class="date">';
 	echo $row['date'].' ('.$row['day'].')</span><br />';
-	echo $row['news'].'<br />';
+	$n=$row['news'];
+	$l=240;
+	if(strlen($n) > $l){
+		$n=substr($n,0,$l);
+		$i=$l-1;
+		while($n[$i]!==" ")$i--;
+		$n=substr($n,0,$i)." ...";
+	}
+	echo $n.'<br />';
 }
 echo '<br /><a href="news.php">more news</a></p>';
 

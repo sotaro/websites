@@ -1,57 +1,79 @@
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" />
+<script src="js/jquery.prettyPhoto.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("a[rel^='prettyPhoto']").prettyPhoto();
+	});
+</script>
+
 <div class="wrap">
 <h2>Video</h2>
 
-<ul id="mymovies">
 <?php
+$max = 6;
+if(array_key_exists('page',$_GET)) $page = (int)$_GET['page'];
+else $page = 1;
+
 set_include_path('./library/');
 require_once 'Zend/Loader.php';
 Zend_Loader::loadClass('Zend_Gdata_YouTube');
 $yt = new Zend_Gdata_YouTube();
 $yt->setMajorProtocolVersion(2);
-printVideoFeed($yt->getuserUploads("themoaspecial"));
-?>
-</ul>
-<p id="clear">&nbsp;</p>
-</div>
-
-<?php
-function printVideoFeed($videoFeed, $displayTitle = null) 
-{
-  if ($displayTitle === null) {
-    $displayTitle = $videoFeed->title->text;
-  }
-  echo '<h3>' . $displayTitle . '</h3>' . "\n";
-  echo "\n";
-  foreach ($videoFeed as $videoEntry) {
-     echo '<li>';
-     printVideoEntry($videoEntry);
-     echo "\n";
-     echo "</li>";
-  }
+$query = $yt->newVideoQuery();
+$query->setAuthor('themoaspecial');
+$query->setOrderBy('updated');
+$query->setStartIndex(($page-1)*6+1);
+$query->setMaxResults(6);
+$videos=$yt->getVideoFeed($query->getQueryUrl(2));
+$p=$n=0;
+try {
+	$p=$videos->getPreviousFeed();
 }
-function printVideoEntry($videoEntry) {
+catch (Zend_Gdata_App_Exception $e){ }
+try {
+	$n=$videos->getNextFeed();
+}
+catch (Zend_Gdata_App_Exception $e){ }
+if($p) $prev = "<a href=\"video.php?page=".($page - 1)."\">&lt;&nbsp;Prev&nbsp;".$max."</a>";
+else $prev = "&lt;&nbsp;Prev&nbsp;".$max;
+if($n) $next = "<a href=\"video.php?page=".($page + 1)."\">Next&nbsp;".$max."&nbsp;&gt;</a>";
+else $next = "Next&nbsp;".$max."&nbsp;&gt;";
 
-  $title = $videoEntry->getVideoTitle();
-  $videoid = $videoEntry->getVideoID();
-  $description = $videoEntry->getVideoDescription();
-  //$tags = $videoEntry->getVideoTags();
-  //if(is_array($tags)){$tags = implode(',',$tags);}
-  $l_url = $videoEntry->getVideoWatchPageUrl();
-  //$s_url = 'http://youtu.be/' .  $videoid;
-  //$time = gmdate('i:s', $videoEntry->getVideoDuration());
-  //$count = $videoEntry->getVideoViewCount();
-  //$ratinginfo = $videoEntry->getVideoRatingInfo();
-  //$rating = $ratinginfo['numRaters'];
-  $thumbnail = 'http://i.ytimg.com/vi/' . $videoid . '/hqdefault.jpg';
+echo $prev." / ".$next;
+echo '<ul id="mymovies">';
+printYoutube($videos);
+echo '</ul><div class=clear>';
+echo $prev." / ".$next;
+echo '<p id="clear">&nbsp;</p>';
+echo '</div><br class="clear">';
 
-$yttable = 
-	'<a class="thickbox" title="preview" href="http://www.youtube.com/watch_popup?v='.$videoid. 
-	'&TB_iframe=true&height=300&width=400"><img src="'.$thumbnail.'" alt="" width="200" /></a>'.
-	'<table class="movielines"><tbody><tr><th colspan="2"><a title="'.$description.'" href="'.$l_url.'">'.
-   	$title.'</a></th></tr></tbody></table>';
+function printYoutube($videos){
+	foreach ($videos as $video) {
+		$title = $video->getVideoTitle();
+		$videoid = $video->getVideoID();
+		$description = $video->getVideoDescription();
+		$l_url = $video->getVideoWatchPageUrl();
+		$path= 'http://www.youtube.com/watch_popup?v='.$videoid;
+		$thumbnail = 'http://i.ytimg.com/vi/' . $videoid . '/hqdefault.jpg';
+		echo '<li>';
+		echo '<a rel="prettyPhoto" href="'.$path.'"><img src="'.$thumbnail.'" width="250" /></a>'.
+			'<a style="height:38px; overflow:hidden; display:block" title="'.$description.
+			'" href="'.$l_url.'">'.$title.'</a>';
+		echo '</li>';
 
-echo $yttable;
-}?>
+		//if($title == "Jamming on drums taken with an iPhone 4S"){
+		/*
+		if(strstr($title,"Usher")){
+			if($fp=fopen("/tmp/b.txt","w")){
+				fwrite($fp,print_r($video,TRUE));
+				fclose($fp);
+			}
+		}*/
+	}
+}
+
+?>
 
 <style type="text/css" media="screen">
 ul#mymovies{
@@ -62,7 +84,7 @@ width:100%;
 ul#mymovies li{
 display:block;
 margin:0;
-width:200px;
+width:250px;
 padding:10px;
 float:left;
 }

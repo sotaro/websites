@@ -19,20 +19,16 @@ $q = "select count(num) as num from news";
 $r = mysql_query($q);
 list($total) = mysql_fetch_row($r);
 mysql_free_result($r);
-echo $total . "<br />";
-$maxPage=(int)($total/$max);
-echo $maxPage . "<br />";
+$maxPage=(int)($total/$max)+1;
 if($page>$maxPage) $page=$maxPage;
-echo $page . "<br />";
 $q = "SELECT date,DATE_FORMAT(date,'%a')as day,news FROM news ORDER BY num desc limit ".(($page-1)*$max).",".$max;
-echo $q;
 $rs = mysql_query($q);
-
-if($page===$maxPage) $next = "Next&nbsp;".$max."&nbsp;&gt;";
-else $next = "<a href=\"news.php?page=".($page + 1)."\">Next&nbsp;".$max."&nbsp;&gt;</a>";
 
 if($page===1) $prev = "&lt;&nbsp;Prev&nbsp;".$max;
 else $prev = "<a href=\"news.php?page=".($page - 1)."\">&lt;&nbsp;Prev&nbsp;".$max."</a>";
+
+if($page===$maxPage) $next = "Next&nbsp;".$max."&nbsp;&gt;";
+else $next = "<a href=\"news.php?page=".($page + 1)."\">Next&nbsp;".$max."&nbsp;&gt;</a>";
 
 ?>
 
@@ -43,8 +39,8 @@ else $prev = "<a href=\"news.php?page=".($page - 1)."\">&lt;&nbsp;Prev&nbsp;".$m
 </div>
 <br class="clear" />
 <?php while ($row = mysql_fetch_array($rs)){
-	echo '<p class="itemlist"><span class="date">';
-   	echo $row['date']." (".$row['day'].")</span><br />";
+	if($row['date'])
+		echo '<p class="itemlist"><span class="date">'.$row['date'].' ('.$row['day'].')</span><br />';
 	echo $row['news']."</p>";
 }
 ?>

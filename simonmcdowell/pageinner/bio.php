@@ -1,31 +1,39 @@
 <h2>Bio</h2>
-<div class="right_img"><img src="img/bio_pic.jpg" width="150" height="150" alt="Simon McDowell" /><br />
-<a href="javascript:window.open('bio_jp.html','Bio_Win','height=500,width=500,top=0,left=0,scrollbars=yes,noresizable=yes').focus();" title="Japanese Version"><img src="img/bio_btn_jp.gif" width="150" height="30" alt="Japanese" /></a></div>
-<p>My name is Simon McDowell and I currently live in Auckland, New Zealand. I have been playing drums since the age of 15 years old. A friend of mine from church got me into playing drums as he left me inspired with his great performance, which motivated me to start playing an instrument that requires the use of all for limbs. I also felt that drums would be a much &ldquo;cooler&rdquo; instrument to learn since guitar seemed like the more popular, but also the standard kind of choice (I don't mean to slander guitarists in any way.)</p>
-
-<p>When I started to take drum lessons I didn't have a drum kit to practice on but just a rubber practice pad for a while. For my 16th birthday, my parents bought me my first drum kit, A Black Century drum kit. It was a nice drum kit to practice on, as it had all the essential equipment on it. As the next 12 months were passing I started to enjoy drums a lot more as I got better and better from practising. My drum tutor was finally starting to enjoy teaching me since I wasn't so much of a drag to teach.</p>
-
-<p>By the time I was 17 started saving up for my next drumkit so that I could have a good sounding drum kit to do shows with. When Christmas came around that's when I was able to get more musical instrument shop vouchers on top of what I had saved which eventually gave me enough to buy my next drum kit, A Purple Pearl Export Lacquered Edition. The following year I joined the school Funk and Jazz band and also joined the church band. This challenged me a lot in terms of dynamics and groove but by the end of the year I came out a much better drummer than I had even hoped since playing all year in a band that challenged me also gave me a lot of experience playing in a band with lots of other musicians at once.</p>
-
-<p>When I finished High School I did a one year performing arts course majoring in drums. Here I was taught by one of New Zealand's highly regarded drummers by the name of <a href="http://www.paulrusselldrummer.com/" target="_blank">Paul Russell</a>. For the last year he had always been an inspiration to me because of his unique style that he had so I was fortunate to start getting tuition of him. Later this year I also joined my first Rock/Alternative band named &ldquo;Blu-room&rdquo;. Unfortunately the singer was unable to keep juggling his Flight Attending Job and the band together so had to call it a day. Although the band didn't maintain for very long we all had a lot of fun and came out as good friends in the end.</p>
-
-<p>As the year of the performing arts course ended I decided to continue getting lessons off Paul. From Next year I started teaching students and also doing session work doing random shows and studio recordings for random artists. At the end of that year I started playing for a Pop/Rock solo artist named <a href="http://www.jamiegray.co.nz/" target="_blank">Jamie Gray</a> (<a href="http://www.myspace.com/jamiegraymusic" target="_blank">MySpace</a>), which led me to my first experience of shooting a music video.</p>
-
-<p>The music video was for his first hit single, &ldquo;Rescue Us&rdquo; which got played on numerous radio stations around the country along with the video getting aired on Juice TV and various other channels. Later the following year, Jamie and the rest of the band including myself, recorded a mini album named &ldquo;If you need a reason you're in the wrong place&rdquo; (I know.. pretty long title name..)</p>
-
-<p>When the mini album went on sale online (before it hit the stores) 4 of its songs managed to reach within the top 13 songs on the &ldquo;Adult Contemporary Chart&rdquo; on <a href="http://www.amplifier.co.nz/" target="_blank">www.amplifier.co.nz</a> with &ldquo;3 Little Words&rdquo; staying #1 for 2 weeks.</p>
-
-<p>Next Year in May I had a final gig with Jamie Gray. It was a great gig which I couldnt have asked for a better send off. I made sure that this was a good last gig since I had been playing for Jamie for the last 1 1/2 years. By this time I decided to take on another long-term project. It was a punk/ska band named Free For All. This was something much more different to Jamie Gray's music but it challenged me a lot in terms of endurance and speed since it required hard hitting at much faster tempos. But later on, so much for the &ldquo;Long-term&rdquo; project, another project named Simple Day introduced themselves to me saying they were in need of a drummer since their current one was leaving. They had (and still do of course) a very good comercial sound with their punk/powerpop/rock music and I really loved the sound myself so I decided to go on board the project but at the same time I wrapped it up with Free For All. To this day I still remain good friends with the Free For All Band Members.</p>
-
-<p>Around the same time another project came my way. This was when I was Introduced to Steve Edwards through his manager, Paul Marshall. He spoke to me about Steve looking for musicians here in Auckland, New Zealand including a drummer and bass guitarist to form a Steve Edwards Backing Band. Paul gave me a copy of his album. I anxiously put it into my car cd player as I started my car engine. Few words I could think of was &ldquo;I totally loved it!&rdquo;. Since Steve was also looking for a Bass Player I contacted Ken Kimi (The Bass player I played with in the Jamie Gray Backing Band) and told him that I had a propisition for him. He had a listen to the album and he loved it just as much as I did. Soon both Ken and I were set for an audition date. We both practised for the day and once we went to the audiotion and played a few songs in Front of Steve, Paul and John, Steve's guitarist. We apparently had great feel and was then, granted the positions in the Steve Edwards Band.</p>
-
-<p>Currently I am now Playing in the Steve Edwards Backing Band and Punk/Rock Band, Simple Day.</p>
-
-<div class="column"><h3>Affiliations</h3>
+<p>My name is Simon McDowell. I’m a half Japanese/New Zealander that currently lives
+in Tokyo, Japan. I have been playing drums since the age of 14 years old. A friend
+of mine from church got me into playing drums as he left me inspired with his great
+performance, which motivated me to start playing an instrument that requires the use
+of all four limbs. I also felt that drums would be a much “cooler” instrument to learn
+since guitar seemed like the more popular, but also the standard kind of choice (I don't
+mean to slander guitarists in any way).</p>
+<p>Before I moved to Tokyo, Japan in 2009 I was playing in a lot of bands and doing
+a lot of freelance work in New Zealand and Australia. I also taught a lot of private
+students in Auckland, New Zealand, where I grew up and lived for most of my life.
+I went and studied music at a music technical school and had lessons from a guy
+named Paul Russell who is one of New Zealand’s most highly regarded drummers.
+He moved to London in 2006 and after that I had lessons for 3 years off a guy
+named Frank Gibson Jnr who is also another one of New Zealand’s highly regarded
+drummers. While in New Zealand for many years I played many in many different
+types of bands including Funk, Jazz, Reggae, Pop, Rock, Punk, RNB, Gospel and
+others that I may have forgotten to name!</p>
+<p>After moving to Tokyo I have kept on playing for a few different artists and even had
+the honor to play in Saitama Arena, which was a big show for me! At the moment, I
+currently teach students around Tokyo and play regularly in a Pop/Rock band named
+Favorite Underdog. I also do some freelance work on the side as well as uploading
+some free lesson videos on YouTube.</p>
+<h3>Artists that I have worked with:</h3>
 <ul>
-<li>Jamie Gray: <a href="http://www.jamiegray.co.nz/" target="_blank">Website</a> / <a href="http://www.myspace.com/jamiegraymusic" target="_blank">MySpace</a></li>
-<li>Free For All</li>
-<li>Steve Edwards: <a href="http://www.steveedwardsmusic.com/root2/index.htm" target="_blank">Website</a> / <a href="http://www.myspace.com/steveedwardsmusic" target="_blank">MySpace</a></li>
-<li>Simple Day: <a href="http://www.myspace.com/simpleday" target="_blank">MySpace</a></li>
-<li>False Start: <a href="http://www.falsestartrock.com" target="_blank">Website</a> / <a href="http://www.myspace.com/falsestartband" target="_blank">MySpace</a></li>
+<li>Favorite Underdog</li>
+<li>Yui</li>
+<li>Jasmine</li>
+<li>Kaleb James</li>
+<li>Kat McDowell</li>
+<li>Harsh Jokers</li>
+<li>Kim</li>
+<li>Steve Edwards</li>
+<li>Payola</li>
+<li>Simple Day</li>
+<li>False Start</li>
+<li>Jamie Gray</li>
+<li>Mali Mali</li>
 </ul>
