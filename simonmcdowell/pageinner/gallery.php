@@ -15,7 +15,6 @@ function gallery(ii){
 		s+='	</a>';
 		s+='</li>';
 	}
-	//style=left:300px;
 
 	$("#thumbs ul.thumbs").append(s);
 	$('div.navigation').css({'width' : 'auto', 'float' : 'left'});
@@ -248,10 +247,12 @@ $gp = new Zend_Gdata_Photos();
 
 try {
 	$query = $gp->newAlbumQuery();
-	$query->setUser("madeoftheforce");
-	$query->setAlbumName("d2");
+	$query->setUser("110129975935177747102");
+	$query->setAlbumName("PhotoshootInNewZealand24122011");
 	$query->setThumbsize("512,72");
 	$albumFeed = $gp->getAlbumFeed($query);
+
+
 	$imgs='[';
 	foreach ($albumFeed as $albumEntry) {
 		//$imgs.='["'.$albumEntry->content->src.'",';

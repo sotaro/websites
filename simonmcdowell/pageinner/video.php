@@ -61,15 +61,6 @@ function printYoutube($videos){
 			'<a style="height:38px; overflow:hidden; display:block" title="'.$description.
 			'" href="'.$l_url.'">'.$title.'</a>';
 		echo '</li>';
-
-		//if($title == "Jamming on drums taken with an iPhone 4S"){
-		/*
-		if(strstr($title,"Usher")){
-			if($fp=fopen("/tmp/b.txt","w")){
-				fwrite($fp,print_r($video,TRUE));
-				fclose($fp);
-			}
-		}*/
 	}
 }
 

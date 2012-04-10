@@ -13,7 +13,6 @@
 <div class="right-panel">
 <?php 
 
-//var_dump($_SERVER);
 $___conf=unserialize(file_get_contents("./simon.conf"));
 $r=$_SERVER['REQUEST_URI'];
 if($p=strpos($r,"?")) $r=substr($r,0,$p);
