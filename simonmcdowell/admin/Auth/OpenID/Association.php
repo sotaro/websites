@@ -602,7 +602,11 @@ class Auth_OpenID_SessionNegotiator {
     {
         if (!$this->allowed_types) {
             return array(null, null);
-        }
+				}
+
+				foreach($this->allowed_types as $allowed_type){
+					if($allowed_type[1]==="DH-SHA256") return $allowed_type;
+				}
 
         return $this->allowed_types[0];
     }
