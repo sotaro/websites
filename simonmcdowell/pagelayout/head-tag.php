@@ -1,8 +1,8 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../css/style.css" type="text/css" />
 <link rel="stylesheet" href="../css/ui-darkness/jquery-ui-1.8.18.custom.css" type="text/css" />
-<meta name="keywords" content="Drummer,Drum,Drum tutor,tutor,Simon,Simon McDowell" />
-<meta name="description" content="" />
+<meta name="keywords" content="Drummer,Drum,Drum tutor,tutor,ドラム,ドラマー,レッスン" />
+<meta name="description" content="ドラマー、サイモンのサイトです" />
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/jquery-ui-1.8.18.custom.min.js"></script>
 <script type="text/javascript">
