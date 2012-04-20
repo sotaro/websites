@@ -10,11 +10,10 @@ body {
 	font-size: 80%;
 	font-family: "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", "Trebuchet", "Arial",sans-serif;
 	line-height: 140%;
-	background: #AD9263 url(../img/admin_bg.jpg) no-repeat;
+	background: #AD9263;
 	margin-bottom: 20px;
 }
 div {
-	text-align: left;
 }
 p {
 	margin-bottom: 1.5em;
@@ -24,7 +23,7 @@ img {
 }
 a {
 	color: #FFF;
-	text-decoration: none;
+	text-decoration: underline;
 	font-weight: bold;
 }
 a:active,
@@ -47,30 +46,29 @@ strong {
 
 /* [Layout] */
 #wrapper {
-	width: 800px;
 	padding-bottom: 30px;
 }
 #header {
-	width: 224px;
+	width: 480px;
 	height: 83px;
-	margin: 25px 0 29px 485px;
+	margin: 25px auto 25px auto;
 	text-align: center;
 }
 #navi {
-	width: 380px;
+	width: 320px;
 	height: 15px;
 	margin: 0 0 28px 405px;
 }
 #navi ul {
-	width: 380px;
+	width: 320px;
 }
 #navi li {
 	float: left;
 	padding: 0 3px 0 0;
 }
 #contents {
-	width: 380px;
-	margin: 0 20px 0 400px;
+	width: 800px;
+	margin: 0 auto 0 auto;
 }
 
 .date {
@@ -88,6 +86,7 @@ h2 {
 h3 {
 	font-size: 100%;
 	margin-bottom: 3px;
+	text-align: left;
 }
 .form_container {
 	padding-bottom: 15px;
@@ -106,7 +105,7 @@ input.timefield {
 	width: 60px;
 }
 textarea {
-	width: 320px;
+	width: 744px;
 }
 #total {
 	margin-bottom: 5px;
@@ -134,4 +133,17 @@ textarea {
 .itemlist {
 	padding-bottom: 15px;
 	border-bottom: 1px solid #9B8359;
+}
+th {
+	text-align: left;
+}
+
+#menu {
+	text-align: center;
+	font-size: 120%;
+	margin-bottom: 10px;
+}
+
+#menu strong {
+	font-size: 150%;
 }

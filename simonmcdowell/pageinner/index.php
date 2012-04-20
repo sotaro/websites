@@ -30,7 +30,7 @@ while($row = mysql_fetch_array($rs)){
 echo '<br /><a href="news.php">more news</a></p>';
 
 // shows
-$q="SELECT date,DATE_FORMAT(date,'%a') as day,start,end,venue,band,charge,url FROM shows ".
+$q="SELECT date,DATE_FORMAT(date,'%a') as day,start,end,venue,band,charge,site FROM shows ".
    "where date >= current_date ORDER BY date limit 3";
 $r=mysql_query($q);
 if(!mysql_num_rows($r)){
@@ -44,7 +44,7 @@ while($row=mysql_fetch_array($r)){
     echo 'Venue: ' .$row['venue']."<br />";
     echo 'Band/Artist: ' .$row['band']."<br />";
     echo 'Cost: ' .$row['charge']."<br />";
-    echo 'Website: <a href=\"'.$row['url'].'\" target=\"_blank\">'.$row['url'].'</a></p>';
+    echo 'Website: <a href=\"'.$row['site'].'\" target=\"_blank\">'.$row['site'].'</a></p>';
 }
 echo '<p><a href="shows.php">more shows</a></p>';
 

@@ -62,16 +62,19 @@ a:hover{
 .contents{
 	margin:auto;
 	padding:0 20px;
+	width:1200px;
 	}
 
 .left-panel{
 		float:left;
-		width:45%;
+		width:20%;
 	}
 .right-panel{
 	float:left;
-	width:45%;
+	width:60%;
 	padding:20px 0 0 0;
+	background-color:black;
+	opacity: 0.8;
 	}
 h2{
 	font-family:"Comic Sans MS", cursive;
@@ -89,10 +92,6 @@ p {
 	line-height:18px;
 	}
 
-.separator{
-	background:url(../images/layout/separator.png) repeat-y;
-	height:11px;
-	}
 #footer{
 	text-align:center;
 	}
@@ -182,4 +181,14 @@ div.social-icon
 	display:inline-block;
 	margin-right: 10px;
 	}
+textarea {
+	width:300px
+}
+span.error {
+	color:orange;
+	font-size:150%;
+}
 
+#msg {
+	color:orange;
+}

@@ -79,7 +79,7 @@ function gallery(ii){
 	}
 	div.content {
 		display: none;
-		float: right;
+		margin: auto;
 		width: 520px;
 	}
 	div.content a, div.navigation a {

@@ -1,63 +1,208 @@
 <?php
 
-//Session Start
-session_start();
-$input_name="";
-$e_name="";
-$input_email="";
-$e_email="";
-$input_message="";
-$e_message="";
-$_SESSION['tuition_form']="";
-$_SESSION['error_message_flag']="";
+Class myForm{
 
-if ($_SESSION['flag'] == "1") {
-	$input_name = $_SESSION['tuition_form'] ['tui_name'];
-	$input_email = $_SESSION['tuition_form'] ['tui_email'];
-	$input_message = $_SESSION['tuition_form'] ['tui_message'];
-	
-	if ($_SESSION['error_name_flag'] == "1") {
-		$e_name = "<br />\r<span class=\"error\">";
-		$e_name .= $_SESSION['error_name'];
-		$e_name .= "</span>\r";
-	} else {
-		$e_name = "";
+	var $mode;
+	var $symbol;
+	var $title;
+	var $keys;
+	var $types;
+	var $inputs;
+	var $extras;
+	var $specs;
+	var $errors;
+
+	function __construct($s,$t,$arr){
+
+		$this->mode=@$_GET['mode'];
+		$this->symbol=$s;
+		$this->title=$t;
+		$max=count($arr);
+		for($i=0;$i<$max;$i++){
+			$this->keys[$i]=$arr[$i][0];
+			$this->inputs[$this->keys[$i]]=@$_POST[$this->keys[$i]];
+			$this->types[$this->keys[$i]]=$arr[$i][1];
+			$this->extras[$this->keys[$i]]=$arr[$i][2];
+			$this->specs[$this->keys[$i]]=$arr[$i][3];
+			$this->errors[$this->keys[$i]]="";
+		}
 	}
-	if ($_SESSION['error_email_flag'] == "1") {
-		$e_email = "<br />\r<span class=\"error\">";
-		$e_email .= $_SESSION['error_email'];
-		$e_email .= "</span>\r";
-	} else {
-		$e_email = "";
+
+	private function disp($msg=""){
+
+		$u=hash("crc32",rand());
+		$_SESSION['uniq']=$u;
+
+		echo '<h2>'.$this->title.'</h2>';
+		echo file_get_contents(getcwd().'/admin/'.$this->symbol.'_en.txt');
+		echo file_get_contents(getcwd().'/admin/'.$this->symbol.'_jp.txt');
+		echo '<hr />';
+		echo '<form id="'.$this->symbol.'_form" action="'.$this->symbol.'.php?mode=check&uniq='.$u.
+				 '" method="post">';
+		echo '<h3 style="font-size:120%">Please fill in the details below:</h3>';
+		echo '<div id="msg">'.$msg.'</div>';
+		foreach($this->keys as $key){
+			echo '<p><label>'.ucwords($key).'</label>&nbsp;:'.$this->errors[$key].'<br />';
+			if($this->types[$key]==="textarea"){
+				echo '<textarea id="'.$key.'" name="'.$key.'"'.$this->extras[$key].'>'.
+						 $this->inputs[$key].'</textarea></p>';
+			}
+			else{
+				echo '<input type="'.$this->types[$key].'" id="'.$key.'" name="'.$key.'"'.$this->extras[$key].
+				 		 'value="'.$this->inputs[$key].'" /></p>';
+			}
+		}
+		echo '<p><input type="submit" value="check" /></p>';
+		echo '</form>';
+
 	}
-	if ($_SESSION['error_message_flag'] == "1") {
-		$e_message = "<br />\r<span class=\"error\">";
-		$e_message .= $_SESSION['error_message'];
-		$e_message .= "</span>\r";
-	} else {
-		$e_message = "";
+
+	private function check(){
+
+		$err=0;
+		foreach($this->inputs as $key => $input){
+			foreach($this->specs[$key] as $spec){
+				if($spec==="must"){
+					if(empty($input)){
+						$this->errors[$key]="<span class=\"error\">   Empty</span>";
+						$err++;
+						break;
+					}
+				}
+				else if($spec==="email"){
+					if(!filter_var($input, FILTER_VALIDATE_EMAIL)){
+						$this->errors[$key]="<span class=\"error\">   Invalid</span>";
+						$err++;
+						break;
+					}
+					list($usr,$domain)=split('@',$input);
+					if(!checkdnsrr($domain,'MX')&&!checkdnsrr($domain,'A')){
+						$this->errors[$key]="<span class=\"error\">   Invalid</span>";
+						$err++;
+						break;
+					}
+				}
+			}
+		}
+		$u=@$_GET['uniq'];
+		if(empty($u)||$u!==$_SESSION['uniq']){
+			error_log($u." vs ".$_SESSION['uniq']);
+			$msg="Please try again.";
+			$err++;
+		}
+
+		if($err){
+			error_log("Request had ".$err." error(s).");
+			$this->disp($msg);
+			return;
+		}
+		$this->dispConfirm();
 	}
+
+	private function dispConfirm(){
+
+		$u=hash("crc32",rand());
+		$_SESSION['uniq']=$u;
+
+		echo '<h2>'.$this->title.'</h2>';
+		echo '<form id="'.$this->symbol.'_form" action="'.$this->symbol.'.php?mode=confirm&uniq='.$u.
+				 '" method="post">';
+		echo '<h3 style="font-size:120%" >Please confirm all the details below:</h3>';
+
+		$vals="";
+		foreach($this->keys as $key){
+			echo '<p><label>'.$key.'</label>:'.$this->inputs[$key].'</p>';
+			echo '<input type="hidden" name="'.$key.'" value="'.$this->inputs[$key].'" />';
+			$vals.=$this->inputs[$key];
+		}
+		$sig=sha1($vals);
+		$_SESSION['sig']=$sig;
+		echo '<input type="hidden" name="sig" value="'.$sig.'" />';
+		echo '<p><input id="back" type="button" value="modify" class="'.$this->symbol.'_form" />';
+		echo '&nbsp;<input type="submit" value="submit" /></p>';
+		echo '</form>';
+	}
+
+	private function confirm(){
+
+		if(empty($_GET['uniq'])||$_GET['uniq']!==$_SESSION['uniq']){
+			$this->disp("Please try again.");
+			return;
+		}
+
+		if(empty($_POST['sig'])||$_POST['sig']!==$_SESSION['sig']){
+			$this->disp("Please try again.");
+			return;
+		}
+
+		//$to 			= "the.moa.special@gmail.com,the_moa_special@hotmail.com,simon@simonmcdowell.com";
+		$to				= "sotaro.dev@gmail.com";
+		$subject	= "Drum Tuition Inquiry";
+
+		$msg  = "--------------------------------------------\n\n";
+		$msg .= "  " .$this->inputs['name']. "\n\n";
+		$msg .= "  Email: " .$this->inputs['email']. "\n\n";
+		$msg .= "--------------------------------------------\n\n";
+		$msg .= "\n\n";
+		$msg .= "  Message:\n\n";
+		$msg .= "  " .$this->inputs['message']. "\n\n";
+
+		$mailheaders  = "From: " .$this->inputs['email']."\r\n";
+		$mailheaders  = "Sender: ".$_SERVER['HTTP_HOST']."\r\n";
+		$mailheaders .= "Reply-To: " .$this->inputs['email']. "\r\n";
+		//$mailheaders .= "Errors-To: the.moa.special@gmail.com\r\n";
+		$mailheaders .= "Errors-To: sotaro.dev@gmail.com\r\n";
+		$mailheaders .= "MIME-Version: 1.0\r\n";
+		$mailheaders .= "Content-type: text/plain; charset=\"UTF-8\"\r\n";
+		$mailheaders .= "Content-Transfer-Encoding: 7bit\r\n";
+		$mailheaders .= "X-Mailer: PHP/".phpversion()."\r\n"; 
+
+		mail($to, $subject, $msg, $mailheaders);
+
+		header ("Location: tuition.php?mode=thanks");
+		return;
+	}
+
+	private function thanks(){
+
+		echo '<h2>'.$this->title.'</h2>';
+		echo '<p>Thank you for your inquiry. Your message has been sent successfully.</p>';
+		echo '<p>Simon will reply to you shortly.</p>';
+		echo '<p>お問い合わせありがとうございます。</p>';
+		echo '<p>折り返し連絡します。サイモン</p>';
+	}
+
+	private function getFunc(){
+
+		switch ($this->mode){
+			case "check":
+				$func="check";
+				break;
+			case "confirm":
+				$func="confirm";
+				break;
+			case "thanks":
+				$func="thanks";
+				break;
+			default:
+				$func="disp";
+		}
+		return $func;
+	}
+
+	function run(){
+
+		$f=$this->getFunc();
+		$this->$f();	
+	}
+
 }
-$_SESSION['flag'] = "0";
+
+session_start();
+$f=new myForm("tuition","Drum Tuition",
+									array(
+										array("name","text"," size=\"30\"",array("must")),
+										array("email","text"," size=\"30\"",array("must","email")),
+										array("message","textarea"," rows=\"8\"",array("must"))));
+$f->run();
 ?>
-
-
-
-<h2>Drum Tuition</h2>
-<p>I can teach you all kinds of styles and can teach you exactly what would apply to your playing and correct any of your bad habits!</p>
-<p>I have had a ton of experience in the professional world of music and can get serious, ambitious drummers learning more rapidly to reach their goal in trying to make a living in music!</p>
-<p>I teach at Studio Grand Bleu in Hatagaya which is located on the Keio New Line 2 stops from Shinjuku Station.</p>
-<p>I teach for <strong>4000YEN an hour (including studio fee)</strong> or if I were to come to you it would be <strong>3000YEN (plus transportation cost from Shinjuku)</strong></p>
-<p>私はプロの音楽の世界での経験が豊富なので、趣味レベルで始めたい方から、真剣にプロを目指している方までどなたでもオッケーです！</p>
-<p>レッスンは、幡ケ谷駅付近のスタジオで行います。新宿駅から京王線で2駅です。</p>
-<p>授業料は、スタジオ費込で<strong>1時間4000円</strong>、もし出張レッスンをご希望でしたら、<strong>3000円プラス交通費</strong>です。</p>
-<form id="tuition_form" action="pageinner/tuition_check.php" method="post">
-<h3>Please fill in the details below:</h3>
-<p><label for="tui_name">Your name</label>:<br />
-<input type="text" id="tui_name" name="tui_name" class="form_txt" tabindex="1" alt="Your Name" value="<? echo $input_name; ?>" /><? echo $e_name; ?></p>
-<p><label for="tui_email">Your Email</label>:<br />
-<input type="text" id="tui_email" name="tui_email" class="form_txt" tabindex="2" alt="Your Email" value="<? echo $input_email; ?>" /><? echo $e_email; ?></p>
-<p><label for="tui_message">Message</label>:<br />
-<textarea tabindex="3" id="tui_message" name="tui_message" rows="8" tabindex="3"><? echo $input_message; ?></textarea><? echo $e_message; ?></p>
-<p><input type="hidden" name="check" value="ok" /><input type="image" src="img/btn_submit.gif" alt="submit" title="submit" /></p>
-</form>

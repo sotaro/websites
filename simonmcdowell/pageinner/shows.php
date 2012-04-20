@@ -19,9 +19,9 @@ $q = "select count(num) as num from shows";
 $r = mysql_query($q);
 list($total) = mysql_fetch_row($r);
 mysql_free_result($r);
-$maxPage=(int)($total/$max)+1;
+$maxPage=(int)ceil($total/$max);
 if($page>$maxPage) $page=$maxPage;
-$q="SELECT date,DATE_FORMAT(date,'%a') as day,start,end,venue,band,charge,url FROM shows ".
+$q="SELECT date,DATE_FORMAT(date,'%a') as day,start,end,venue,band,charge,site FROM shows ".
    "where date >= current_date ORDER BY date limit ".(($page-1)*$max).",".$max;
 $rs = mysql_query($q);
 
@@ -46,7 +46,7 @@ else $next = "<a href=\"shows.php?page=".($page + 1)."\">Next&nbsp;".$max."&nbsp
 	echo "Venue: " .$row['venue']."<br />"; 
 	echo "Band/Artist: " .$row['band']."<br />";
 	echo "Cost: " .$row['charge']."<br />";
-	echo "Website: <a href=\"" .$row['url']. "\" target=\"_blank\">" .$row['url']. "</a></p>";
+	echo "Website: <a href=\"" .$row['site']. "\" target=\"_blank\">" .$row['site']. "</a></p>";
 } ?>
 
 <div class="pagenum">
