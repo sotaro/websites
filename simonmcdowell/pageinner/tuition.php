@@ -86,13 +86,11 @@ Class myForm{
 		}
 		$u=@$_GET['uniq'];
 		if(empty($u)||$u!==$_SESSION['uniq']){
-			error_log($u." vs ".$_SESSION['uniq']);
 			$msg="Please try again.";
 			$err++;
 		}
 
 		if($err){
-			error_log("Request had ".$err." error(s).");
 			$this->disp($msg);
 			return;
 		}

@@ -38,7 +38,6 @@ Class myDB{
 			$q.='"'.$val.'",';
 		}
 		$q[strlen($q)-1]=")";
-		error_log($q);
 		if(!mysql_query($q)){
 			error_log(mysql_error());
 			return FALSE;
@@ -48,7 +47,6 @@ Class myDB{
 
   function del($num){
 		$q="delete from ".$this->table." where num=".$num;
-		error_log($q);
 		if(!mysql_query($q)) return FALSE;
 		return TRUE;
 	}
@@ -60,7 +58,6 @@ Class myDB{
 		}
 		$q[strlen($q)-1]=" ";
 		$q.=" where num=".$num;
-		error_log($q);
 		if(!mysql_query($q)) return FALSE;
 		return TRUE;
 	}
@@ -76,7 +73,6 @@ Class myDB{
 		$q="select * from ".$this->table;
 		if($num) $q.=" where num=".$num;
 		if($order) $q.=" order by ".$order." limit ".$from.",20";
-		error_log($q);
 		if(!$r=mysql_query($q)) return FALSE;
 		$rows=array();
 		while ($row = mysql_fetch_array($r))
@@ -125,7 +121,6 @@ Class myList{
 			default:
 				$func="show";
 		}
-		error_log("func : ".$func);
 		return $func;
 	}
 
@@ -176,8 +171,6 @@ Class myList{
 	}
 
 	function del(){
-			error_log("num:".$_GET['num']);
-			error_log(print_r($_COOKIE,TRUE));
 			$db=new myDB($this->type);
 			$db->del($_GET['num']);
 			echo '{"url":"'.$this->type.'.php?.rand='.crc32(rand()).'"}';
@@ -202,10 +195,11 @@ Class myList{
 		$db=new myDB($this->type);
 		$max=20;
 		$p=(int)@$_GET['page'];
-		$p=($p>0)?$p:1;
+		if($p<1) $p=1;
+		$maxPage=(int)ceil($db->count()/$max);
+		if($p>$maxPage) $p=$maxPage;
 		$from=($p-1)*$max;
 		$rows=$db->get(NULL,"num desc",$from);
-		$maxPage=(int)ceil($db->count()/$max);
 		$prev=$next="";
 		if($p===1) $prev = "&lt;&nbsp;Prev&nbsp;".$max;
 		else $prev = "<a href=\"news.php?page=".($p - 1)."\">&lt;&nbsp;Prev&nbsp;".$max."</a>";

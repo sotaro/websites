@@ -156,7 +156,7 @@ class Auth_OpenID_Association {
         if ($now == null) {
             $now = time();
         }
-
+error_log($this->lifetime);
         return max(0, $this->issued + $this->lifetime - $now);
     }
 

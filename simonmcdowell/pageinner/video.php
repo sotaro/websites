@@ -68,9 +68,9 @@ function printYoutube($videos){
 
 <style type="text/css" media="screen">
 ul#mymovies{
-margin:0;
+margin:auto;
 padding:0;
-width:100%;
+width:600px;
 }
 ul#mymovies li{
 display:block;
