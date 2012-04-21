@@ -133,6 +133,8 @@ Class myForm{
 			return;
 		}
 
+		$_SESSION['uniq']=$_SESSION['sig']="";
+
 		//$to 			= "the.moa.special@gmail.com,the_moa_special@hotmail.com,simon@simonmcdowell.com";
 		$to				= "sotaro.dev@gmail.com";
 		$subject	= "Drum Tuition Inquiry";

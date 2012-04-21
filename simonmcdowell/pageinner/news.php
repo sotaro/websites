@@ -20,6 +20,7 @@ $r = mysql_query($q);
 list($total) = mysql_fetch_row($r);
 mysql_free_result($r);
 $maxPage=(int)ceil($total/$max);
+if($maxPage===0) $maxPage=1;
 if($page>$maxPage) $page=$maxPage;
 $q = "SELECT date,DATE_FORMAT(date,'%a')as day,news FROM news ORDER BY num desc limit ".(($page-1)*$max).",".$max;
 $rs = mysql_query($q);
