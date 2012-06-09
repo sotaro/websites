@@ -255,19 +255,10 @@ try {
 
 	$imgs='[';
 	foreach ($albumFeed as $albumEntry) {
-		//$imgs.='["'.$albumEntry->content->src.'",';
 		$imgs.='["'.$albumEntry->mediaGroup->thumbnail[0]->url.'",';
 		$imgs.='"'.$albumEntry->mediaGroup->thumbnail[1]->url.'",';
 		$w=$albumEntry->gphotoWidth->text;
 		$imgs.='"'.(int)((512-$w)/2).'"],';
-		/*
-		if("d3.jpg"===$albumEntry->title->text){
-			if($fp=fopen("/tmp/a.txt","w")){
-				fwrite($fp,print_r($albumEntry,TRUE));
-				fclose($fp);
-			}
-		}
-		 */
 	}
 	$imgs[strlen($imgs)-1]="]";
 	

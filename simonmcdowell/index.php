@@ -1,3 +1,8 @@
+<?php
+session_start();
+set_include_path('./');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>

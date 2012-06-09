@@ -15,7 +15,7 @@ $max = 6;
 if(array_key_exists('page',$_GET)) $page = (int)$_GET['page'];
 else $page = 1;
 
-set_include_path('./library/');
+//set_include_path('./library/');
 require_once 'Zend/Loader.php';
 Zend_Loader::loadClass('Zend_Gdata_YouTube');
 $yt = new Zend_Gdata_YouTube();

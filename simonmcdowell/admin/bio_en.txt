@@ -1,3 +1,4 @@
+<img src="http://simon.localhost/images/layout/simon-logo.png" />
 <p>MMMy name is Simon McDowell. I’m a half Japanese/New Zealander that currently lives
 in Tokyo, Japan. I have been playing drums since the age of 14 years old. A friend
 of mine from church got me into playing drums as he left me inspired with his great

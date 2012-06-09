@@ -80,10 +80,10 @@ Class shows extends myList{
 			return;
 		}
 		list($y,$m,$d)=explode('-',$row[0]['date']);
-		$v=htmlspecialchars($row[0]['venue']);
-		$b=htmlspecialchars($row[0]['band']);
-		$c=htmlspecialchars($row[0]['charge']);
-		$s=htmlspecialchars($row[0]['site']);
+		$v=str_replace('"','\"',$row[0]['venue']);
+		$b=str_replace('"','\"',$row[0]['band']);
+		$c=str_replace('"','\"',$row[0]['charge']);
+		$s=str_replace('"','\"',$row[0]['site']);
 		echo '{"v":"'.$v.'","b":"'.$b.'","c":"'.$c.'",'.'"s":"'.$s.'","y":"'.$y.'","m":"'.$m.'","d":"'.$d.'"}';
 		return;
 	}

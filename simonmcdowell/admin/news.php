@@ -40,7 +40,7 @@ Class news extends myList{
 		$db=new myDB("news");
 		if($mode==="add"){
 			$keys=array("date","news");
-			$vals=array($y."-".$m."-".$d,$n);
+			$vals=array($y."-".$m."-".$d,str_replace("'","\'",$n));
 			if($db->add($keys,$vals)){
 				header("location: http://".$_SERVER['HTTP_HOST']."/admin/news.php");
 				return;
@@ -66,7 +66,9 @@ Class news extends myList{
 		}
 		list($y,$m,$d)=explode('-',$row[0]['date']);
 		$n=str_replace(array("\r\n","\r","\n"),"\\n",$row[0]['news']);
-		echo '{"n":"'.htmlspecialchars($n).'","y":"'.$y.'","m":"'.$m.'","d":"'.$d.'"}';
+		$n=str_replace('"','\"',$n);
+		error_log('{"n":"'.$n.'","y":"'.$y.'","m":"'.$m.'","d":"'.$d.'"}');
+		echo '{"n":"'.$n.'","y":"'.$y.'","m":"'.$m.'","d":"'.$d.'"}';
 		return;
 	}
 
@@ -90,7 +92,7 @@ Class news extends myList{
 			$n2=htmlspecialchars($row['news']);
 			echo '<tr><td>'.sprintf("%02d",($from+$i)).'</td>&nbsp;';
 			echo '<td><div id="tt">';
-			echo '<img title="'.$n2.'" src="../images/layout/view.png" width="24" height="24" /></div></td>';
+			echo '<img src="../images/layout/view.png" width="24" height="24" title="'.$n2.'"/></div></td>';
 			echo '<td><div id="modify" class="news/'.$row['num'].'">';
 			echo '<img src="../images/layout/edit.png" width="24" height="24" /></div></td>';
 			echo '<td><div id="delete" class="news/'.$row['num'].'">';

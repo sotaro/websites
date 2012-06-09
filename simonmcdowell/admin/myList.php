@@ -35,7 +35,7 @@ Class myDB{
 		$q[strlen($q)-1]=")";
 		$q.=" values(";
 		foreach($vals as $val){
-			$q.='"'.$val.'",';
+			$q.="'".$val."',";
 		}
 		$q[strlen($q)-1]=")";
 		if(!mysql_query($q)){
