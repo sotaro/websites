@@ -40,6 +40,7 @@ Class myForm{
 		echo '<hr />';
 		echo '<form id="'.$this->symbol.'_form" action="'.$this->symbol.'.php?mode=check&uniq='.$u.
 				 '" method="post">';
+		echo '<a name="head"></a>';
 		echo '<h3 style="font-size:120%">Please fill in the details below:</h3>';
 		echo '<div id="msg">'.$msg.'</div>';
 		foreach($this->keys as $key){
