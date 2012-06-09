@@ -24,6 +24,7 @@ Class myForm{
 			$this->types[$this->keys[$i]]=$arr[$i][1];
 			$this->extras[$this->keys[$i]]=$arr[$i][2];
 			$this->specs[$this->keys[$i]]=$arr[$i][3];
+			$this->jp[$this->keys[$i]]=$arr[$i][4];
 			$this->errors[$this->keys[$i]]="";
 		}
 	}
@@ -42,7 +43,7 @@ Class myForm{
 		echo '<h3 style="font-size:120%">Please fill in the details below:</h3>';
 		echo '<div id="msg">'.$msg.'</div>';
 		foreach($this->keys as $key){
-			echo '<p><label>'.ucwords($key).'</label>&nbsp;:'.$this->errors[$key].'<br />';
+			echo '<p><label>'.ucwords($key).'('.$this->jp[$key].')</label>&nbsp;:'.$this->errors[$key].'<br />';
 			if($this->types[$key]==="textarea"){
 				echo '<textarea id="'.$key.'" name="'.$key.'"'.$this->extras[$key].'>'.
 						 $this->inputs[$key].'</textarea></p>';
@@ -135,8 +136,7 @@ Class myForm{
 
 		$_SESSION['uniq']=$_SESSION['sig']="";
 
-		//$to 			= "the.moa.special@gmail.com,the_moa_special@hotmail.com,simon@simonmcdowell.com";
-		$to				= "sotaro.dev@gmail.com";
+		$to 			= "the.moa.special@gmail.com,the_moa_special@hotmail.com,simon@simonmcdowell.com";
 		$subject	= "Drum Tuition Inquiry";
 
 		$msg  = "--------------------------------------------\n\n";
@@ -150,8 +150,7 @@ Class myForm{
 		$mailheaders  = "From: " .$this->inputs['email']."\r\n";
 		$mailheaders  = "Sender: ".$_SERVER['HTTP_HOST']."\r\n";
 		$mailheaders .= "Reply-To: " .$this->inputs['email']. "\r\n";
-		//$mailheaders .= "Errors-To: the.moa.special@gmail.com\r\n";
-		$mailheaders .= "Errors-To: sotaro.dev@gmail.com\r\n";
+		$mailheaders .= "Errors-To: the.moa.special@gmail.com\r\n";
 		$mailheaders .= "MIME-Version: 1.0\r\n";
 		$mailheaders .= "Content-type: text/plain; charset=\"UTF-8\"\r\n";
 		$mailheaders .= "Content-Transfer-Encoding: 7bit\r\n";
@@ -201,8 +200,8 @@ Class myForm{
 session_start();
 $f=new myForm("tuition","Drum Tuition",
 									array(
-										array("name","text"," size=\"30\"",array("must")),
-										array("email","text"," size=\"30\"",array("must","email")),
-										array("message","textarea"," rows=\"8\"",array("must"))));
+										array("name","text"," size=\"30\"",array("must"),"名前"),
+										array("email","text"," size=\"30\"",array("must","email"),"メール"),
+										array("message","textarea"," rows=\"8\"",array("must"),"メッセージ")));
 $f->run();
 ?>
