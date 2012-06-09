@@ -110,7 +110,7 @@ Class myForm{
 
 		$vals="";
 		foreach($this->keys as $key){
-			echo '<p><label>'.$key.'</label>:'.$this->inputs[$key].'</p>';
+			echo '<p><label>'.ucwords($key).'('.$this->jp[$key].')</label>:'.$this->inputs[$key].'</p>';
 			echo '<input type="hidden" name="'.$key.'" value="'.$this->inputs[$key].'" />';
 			$vals.=$this->inputs[$key];
 		}
