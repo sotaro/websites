@@ -84,6 +84,17 @@ Class myForm{
 						break;
 					}
 				}
+				else if($spec==="number" && !empty($input)){
+					$hyphen=array("-","－","ー","─");
+					$input=str_replace($hyphen,"",$input);
+					if(!empty($input) && !is_numeric($input)){
+						$this->errors[$key]="<span class=\"error\">   Invalid</span>";
+						$err++;
+					}
+					else if(empty($input)){
+						$this->inputs[$key]="";
+					}
+				}
 			}
 		}
 		$u=@$_GET['uniq'];
@@ -203,6 +214,7 @@ $f=new myForm("tuition","Drum Tuition",
 									array(
 										array("name","text"," size=\"30\"",array("must"),"名前"),
 										array("email","text"," size=\"30\"",array("must","email"),"メール"),
+										array("phone","text"," size=\"30\"",array("number"),"電話番号"),
 										array("message","textarea"," rows=\"8\"",array("must"),"メッセージ")));
 $f->run();
 ?>
