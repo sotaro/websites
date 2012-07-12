@@ -35,7 +35,7 @@ while($row = mysql_fetch_array($rs)){
 		$n=substr($n,0,$i)." ...";
 	}
 	echo '<span class="date">'.$row['date'].' ('.$row['day'].')</span><br />';
-	echo $n.'&nbsp;&nbsp;&nbsp;<a href="news.php#'.$row['num'].'">>> see detail</a><br /><br />';
+	echo $n.'&nbsp;&nbsp;&nbsp;<a href="news.php#'.$row['num'].'">>> more</a><br /><br />';
 }
 echo '<br /><a href="news.php">more news</a></p>';
 
