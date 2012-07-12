@@ -154,6 +154,7 @@ Class myForm{
 		$msg  = "--------------------------------------------\n\n";
 		$msg .= "  " .$this->inputs['name']. "\n\n";
 		$msg .= "  Email: " .$this->inputs['email']. "\n\n";
+		$msg .= "  Phone: " .$this->inputs['phone']. "\n\n";
 		$msg .= "--------------------------------------------\n\n";
 		$msg .= "\n\n";
 		$msg .= "  Message:\n\n";
