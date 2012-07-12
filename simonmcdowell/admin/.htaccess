@@ -1,0 +1,14 @@
+RewriteEngine on
+RewriteBase	/admin/
+RewriteCond %{REQUEST_URI} !^/admin/$
+RewriteCond %{REQUEST_URI} !^/admin/style_admin.css$
+RewriteCond %{REQUEST_URI} !^/admin/index.php$
+RewriteCond %{REQUEST_URI} !^/admin/news.php$
+RewriteCond %{REQUEST_URI} !^/admin/shows.php$
+RewriteCond %{REQUEST_URI} !^/admin/bio.php$
+RewriteCond %{REQUEST_URI} !^/admin/bio_en.txt$
+RewriteCond %{REQUEST_URI} !^/admin/bio_jp.txt$
+RewriteCond %{REQUEST_URI} !^/admin/tuition.php$
+RewriteCond %{REQUEST_URI} !^/admin/tuition_en.txt$
+RewriteCond %{REQUEST_URI} !^/admin/tuition_jp.txt$
+RewriteRule (.*) /admin/index.php [L]
